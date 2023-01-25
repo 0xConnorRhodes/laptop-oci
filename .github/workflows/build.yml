@@ -38,7 +38,7 @@ jobs:
         id: registry_case
         uses: ASzc/change-string-case-action@v5
         with:
-          string: ${{ env.IMAGE_REGISTRY }}#
+          string: ${{ env.IMAGE_REGISTRY }}
             #
       # Push the image to GHCR (Image Registry)
       - name: Push To GHCR
