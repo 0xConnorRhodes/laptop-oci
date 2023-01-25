@@ -15,6 +15,11 @@ jobs:
   push-ghcr:
     name: Build and push image
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
     steps:
       # Checkout push-to-registry action github repository
       - name: Checkout Push to Registry action
