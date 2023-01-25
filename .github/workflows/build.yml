@@ -31,6 +31,15 @@ jobs:
           tags: ${{ env.IMAGE_TAGS }}
           oci: true
 
+      # Workaround bug where capital letters in your GitHub username make it impossible to push to GHCR.
+      # issue with workaround: https://github.com/macbre/push-to-ghcr/issues/12
+      # status of built-in fix from push-to-registry: https://github.com/redhat-actions/push-to-registry/issues/72
+      - name: Lowercase Registry
+        id: registry_case
+        uses: ASzc/change-string-case-action@v5
+        with:
+          string: ${{ env.IMAGE_REGISTRY }}#
+            #
       # Push the image to GHCR (Image Registry)
       - name: Push To GHCR
         uses: redhat-actions/push-to-registry@v2.7
